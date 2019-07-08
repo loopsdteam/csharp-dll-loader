@@ -14,6 +14,7 @@
   "main": "background.js",
   "dependencies": {
     "core-js": "^2.6.5",
+    "electron-edge-js": "^12.0.1",
     "material-design-icons-iconfont": "^3.0.3",
     "roboto-fontface": "*",
     "vue": "^2.6.10",

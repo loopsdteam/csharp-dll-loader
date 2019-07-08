@@ -5,6 +5,9 @@ import router from './router'
 import store from './store'
 import 'roboto-fontface/css/roboto/roboto-fontface.css'
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
+import edge from 'electron-edge-js'
+
+Vue.prototype.$edge = edge
 
 Vue.config.productionTip = false
 
