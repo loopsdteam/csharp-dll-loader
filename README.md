@@ -1,29 +1,30 @@
 # csharp-dll-loader
 
-## Project setup
-```
-yarn install
+c# dll load tester
+
+## how to install
+
+```bash
+# source download
+$ git clone https://github.com/loopsdteam/csharp-dll-loader.git
+
+# go to source dir.
+$ cd csharp-dll-loader
+
+# dependancies install
+$ yarn
+
+# local test
+$ yarn electron:serve
+
+# build
+$ yarn electron:build
 ```
 
-### Compiles and hot-reloads for development
-```
-yarn run serve
-```
+## how to use
 
-### Compiles and minifies for production
-```
-yarn run build
-```
+- Input fields namespace, classname, methodname 
+- Select click and choose dll file
+- Run click!
 
-### Run your tests
-```
-yarn run test
-```
-
-### Lints and fixes files
-```
-yarn run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+![alt screen](./public/screenshot.png)
