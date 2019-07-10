@@ -37,13 +37,19 @@
                 label="method name"
                 v-model="methodName"
               ></v-text-field>
-
+              <v-textarea
+               :disabled="loaded"
+                label="input json"
+                :placeholder="inputPlaceHolder"
+                v-model="input"
+              ></v-textarea>
             </v-form>
           </v-card-text>
           <v-divider></v-divider>
           <v-card-actions>
             <v-spacer></v-spacer>
             <v-btn :disabled="!loaded" flat color="primary" @click="run">run</v-btn>
+            <!-- <v-btn flat color="primary" @click="run">run</v-btn> -->
           </v-card-actions>
         </v-card>
       </v-flex>
@@ -79,7 +85,9 @@ export default {
       methodName: '',
       loaded: false,
       result: '',
-      dll: null
+      dll: null,
+      input: '',
+      inputPlaceHolder: '{ "id": "admin", "pw": "qwer1234", "ip": "1.1.1.1", "port": 12345 }'
     }
   },
   mounted () {
@@ -112,13 +120,23 @@ export default {
       this.loaded = false
     },
     run () {
-      this.dll(1234, (e, result) => {
-        if (e) return (this.result = e.message)
-        localStorage.setItem('nameSpace', this.nameSpace)
-        localStorage.setItem('className', this.className)
-        localStorage.setItem('methodName', this.methodName)
-        this.result = JSON.stringify(result, null, 2)
-      })
+      // console.log(this.input)
+      // const ip = this.input
+      // console.log(JSON.parse(this.input))
+      // console.log(JSON.parse('{ "id": "admin", "pw": "qwer1234", "ip": "1.1.1.1", "port": 12345 }'))
+      // let obj = {}
+      try {
+        const obj = JSON.parse(this.input)
+        this.dll(obj, (e, result) => {
+          if (e) return (this.result = e.message)
+          localStorage.setItem('nameSpace', this.nameSpace)
+          localStorage.setItem('className', this.className)
+          localStorage.setItem('methodName', this.methodName)
+          this.result = JSON.stringify(result, null, 2)
+        })
+      } catch (e) {
+        this.result = e.message
+      }
     }
   }
 }
