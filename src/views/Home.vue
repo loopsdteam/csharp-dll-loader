@@ -94,6 +94,7 @@ export default {
     this.nameSpace = localStorage.getItem('nameSpace')
     this.className = localStorage.getItem('className')
     this.methodName = localStorage.getItem('methodName')
+    this.input = localStorage.getItem('input')
   },
   methods: {
     selectDll () {
@@ -132,6 +133,7 @@ export default {
           localStorage.setItem('nameSpace', this.nameSpace)
           localStorage.setItem('className', this.className)
           localStorage.setItem('methodName', this.methodName)
+          localStorage.setItem('input', this.input)
           this.result = JSON.stringify(result, null, 2)
         })
       } catch (e) {
